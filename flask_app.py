@@ -106,7 +106,9 @@ def logout():
     logout_user()
     return redirect(url_for("index"))
 
-
+@app.route("/test", methods=["GET"])
+def test():
+    return "<h1>test</h1>
 
 # App routes
 @app.route("/", methods=["GET", "POST"])
