@@ -43,13 +43,13 @@ Im geforkte Repo:
 3.	Python 3.13 auswählen
 
 ### 2.3 Webapp-Verzeichnis ersetzen
-1.	Zurück zur Webübersicht
+1.	Zurück auf das Dashboard
 2.	Jetzt Terminal öffnen\
-→ Open Bash Console
+→ Open Bash Console (links auf den Button $ Bash) klicken.
 
 ``` bash
 # Das von GitHub geforkte Repo klonen
-git clone https://github.com/<dein_name>/<dein_repo>.git
+git clone https://github.com/<dein_github_username>/<dein_repo>.git
 
 # Alte Struktur löschen
 rm -rf mysite
@@ -73,10 +73,10 @@ chmod +x post-merge
 2.  Konsole schliessen
 3.  Im Menü auf *Files*
 4.  In den Ordner *mysite/.git/hooks* navigieren (Ordnerstruktur links)
-5.  File *post-merge* (rechts) öffnen, folgenden Inhalt einfügen und speichern (Save):
+5.  File *post-merge* (rechts) öffnen, folgenden Inhalt einfügen und speichern (Save): (Achtung Username ist Case-Sensitive)
 ```bash
 #!/bin/bash
-touch /var/www/<username>_pythonanywhere_com_wsgi.py
+touch /var/www/<username_pythonanywhere>_pythonanywhere_com_wsgi.py
 ```
 
 ------------------------------------------------------------------------
@@ -84,16 +84,16 @@ touch /var/www/<username>_pythonanywhere_com_wsgi.py
 ## 🗄️ 3. MySQL-Datenbank einrichten
 
 ### 3.1 Datenbank erstellen
-1.  Im Menü auf *Databases*
+1.  Im Menü rechts oben auf *Databases* klicken
 2.  Unter MySQL ein DB-Passwort wählen und das Passwort notieren (wird im nächsten Schritt benötigt)
 3.  Mit "Initialize MySQL" bestätigen
-4.  Mit einem Klick auf die neu erstellte DB "&lt;username&gt;$default" die MySQL-Konsole öffnen.
+4.  Mit einem Klick auf die neu erstellte DB "&lt;username&gt;$default" die MySQL-Konsole öffnen. (Wenn Console Limit erreicht, auf dem Dashboard oder im Menü Consoles z.B. Bash Console schliessen)
 5.  In MySQL-Konsole SQL Script ausführen:
 
 ``` sql
 SOURCE mysite/db/TODOS.sql;
 ```
-Dadurch wird die gesamte Struktur erstellt.
+Dadurch wird die gesamte Struktur der Datenbank erstellt.
 
 ------------------------------------------------------------------------
 
@@ -103,10 +103,10 @@ Dadurch wird die gesamte Struktur erstellt.
 
 3.  Inhalt:
 ```
-DB_HOST=<username>.mysql.pythonanywhere-services.com
-DB_USER=<username>
+DB_HOST=<username_pythonanywhere>.mysql.pythonanywhere-services.com
+DB_USER=<username_pythonanywhere>
 DB_PASSWORD=<dein_db_passwort>
-DB_DATABASE=<username>$default
+DB_DATABASE=<username_pythonanywhere>$default
 W_SECRET=<irgend_ein_secret>
 ```
 Für `W_SECRET` darfst du irgend eine Buchstaben- und Zahlenkombination wählen und notieren, da du diese im nächsten Schhritt wieder brauchst
@@ -118,7 +118,7 @@ Für `W_SECRET` darfst du irgend eine Buchstaben- und Zahlenkombination wählen 
 Im GitHub-Repo:
 1.  Settings → Webhooks → Add webhook
 2.  URL:\
-    https://&lt;username&gt;.pythonanywhere.com/update_server
+    https://&lt;username_pythonanywhere&gt;.pythonanywhere.com/update_server
 3.  Content type: `application/json`
 4.  Secret: Die geheime Kombination, die du im ".env" unter `W_SECRET` gesetzt hast
 5.  **Add webhook**
