@@ -108,7 +108,7 @@ def logout():
 
 @app.route("/test", methods=["GET"])
 def test():
-    return "<h1>test new</h1>"
+    return "<h1>test new2</h1>"
 
 # App routes
 @app.route("/", methods=["GET", "POST"])
