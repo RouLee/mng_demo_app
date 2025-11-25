@@ -106,9 +106,12 @@ def logout():
     logout_user()
     return redirect(url_for("index"))
 
-@app.route("/test", methods=["GET"])
-def test():
-    return "<h1>test new2</h1>"
+@app.route("/users", methods=["GET"])
+@login_required
+def users():
+    users = db_read("SELECT id, username FROM users ORDER BY username", ())
+    return render_template("users.html", users=users)
+
 
 # App routes
 @app.route("/", methods=["GET", "POST"])

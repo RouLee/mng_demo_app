@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <ul class="user-list">
+          {% for user in users %}
+              <li class="user-name">
+                {{ user.username }}
+              </li>
+          {% else %}
+            <div>Nichts zu tun🎉</div>
+          {% endfor %}
+        </ul>
+      </div>
+{% endblock %}
+
+      
