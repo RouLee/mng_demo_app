@@ -14,7 +14,7 @@ CREATE TABLE besitzer(
     vorname VARCHAR(100) NOT NULL,
     nachname VARCHAR(100) NOT NULL,
     adresse VARCHAR(250),
-    telefon VARCHAR(20),
+    telefon VARCHAR(20)
 );
 
 CREATE TABLE tierart(
