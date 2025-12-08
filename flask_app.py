@@ -134,8 +134,12 @@ def index():
 @login_required
 def delete_kunde():
     kunde_id = request.form.get("id")
-    db_write("DELETE FROM besitzer WHERE id=%s", (kunde_id,))
-    return redirect(url_for("index"))
+    try:
+        db_write("DELETE FROM besitzer WHERE id=%s", (kunde_id,))
+        return redirect(url_for("index"))
+    except Exception as e:
+        print("Error Kunde löschen:", e)
+        return redirect(url_for("index"))
 
 # @app.post("/complete")
 # @login_required
