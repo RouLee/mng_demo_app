@@ -1,4 +1,4 @@
-from flask import Flask, redirect, render_template, request, url_for
+from flask import Flask, flash, redirect, render_template, request, url_for
 from dotenv import load_dotenv
 import os
 import git
@@ -138,7 +138,8 @@ def delete_kunde():
         db_write("DELETE FROM besitzer WHERE id=%s", (kunde_id,))
         return redirect(url_for("index"))
     except Exception as e:
-        print("Error Kunde löschen:", e)
+        logging.error(f"Error deleting kunde with id {kunde_id}: {e}")
+        flash("Fehler beim Löschen des Kunden. Sind alle Tiere entfernt, die dem/der Kund*in gehören?", "error")
         return redirect(url_for("index"))
 
 # @app.post("/complete")
