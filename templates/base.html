@@ -39,7 +39,8 @@
       }
       .todo-content { font-weight: 600; flex: 1; }
       .navbar-brand { font-weight: 600; }
-      .navbar { background-color: violet; color:black}
+      .navbar { background-color: violet;}
+      .navbar-nav > li > a { color: black; }
     </style>
   </head>
 
@@ -63,7 +64,7 @@
             <li><a href="{{ url_for('index') }}">Startseite</a></li>
             <li><a href="{{ url_for('users') }}">Benutzer</a></li>
           </ul>
-          
+
           <ul class="nav navbar-nav navbar-right">
 
             {% if current_user.is_authenticated %}
