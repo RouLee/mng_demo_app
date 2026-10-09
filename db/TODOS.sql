@@ -1,16 +1,20 @@
-DROP TABLE users;
-DROP TABLE besitzer;
-DROP TABLE tierart;
-DROP TABLE tier;
+-- SQLite-Schema für die Demo-App
+-- Achtung: Beim Ausführen werden alle bestehenden Tabellen und Daten gelöscht!
+
+-- Reihenfolge beachten: Tabellen mit Fremdschlüsseln zuerst löschen
+DROP TABLE IF EXISTS tier;
+DROP TABLE IF EXISTS tierart;
+DROP TABLE IF EXISTS besitzer;
+DROP TABLE IF EXISTS users;
 
 CREATE TABLE users (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
     username VARCHAR(250) NOT NULL UNIQUE,
     password VARCHAR(250) NOT NULL
 );
 
 CREATE TABLE besitzer(
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
     vorname VARCHAR(100) NOT NULL,
     nachname VARCHAR(100) NOT NULL,
     adresse VARCHAR(250),
@@ -18,15 +22,15 @@ CREATE TABLE besitzer(
 );
 
 CREATE TABLE tierart(
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
     bezeichnung VARCHAR(100) NOT NULL
 );
 
 CREATE TABLE tier (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
     tiername VARCHAR(100) NOT NULL,
-    tierart_id INT NOT NULL,
-    besitzer_id INT NOT NULL,
+    tierart_id INTEGER NOT NULL,
+    besitzer_id INTEGER NOT NULL,
     FOREIGN KEY (tierart_id) REFERENCES tierart(id),
     FOREIGN KEY (besitzer_id) REFERENCES besitzer(id)
 );

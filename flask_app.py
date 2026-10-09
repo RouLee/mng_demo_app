@@ -1,9 +1,6 @@
 from flask import Flask, flash, redirect, render_template, request, url_for
 from dotenv import load_dotenv
 import os
-import git
-import hmac
-import hashlib
 from db import db_read, db_write
 from auth import login_manager, authenticate, register_user
 from flask_login import login_user, logout_user, login_required, current_user
@@ -26,25 +23,6 @@ app.secret_key = "supersecret"
 # Init auth
 login_manager.init_app(app)
 login_manager.login_view = "login"
-
-# DON'T CHANGE
-def is_valid_signature(x_hub_signature, data, private_key):
-    hash_algorithm, github_signature = x_hub_signature.split('=', 1)
-    algorithm = hashlib.__dict__.get(hash_algorithm)
-    encoded_key = bytes(private_key, 'latin-1')
-    mac = hmac.new(encoded_key, msg=data, digestmod=algorithm)
-    return hmac.compare_digest(mac.hexdigest(), github_signature)
-
-# DON'T CHANGE
-@app.post('/update_server')
-def webhook():
-    x_hub_signature = request.headers.get('X-Hub-Signature')
-    if is_valid_signature(x_hub_signature, request.data, W_SECRET):
-        repo = git.Repo('./mysite')
-        origin = repo.remotes.origin
-        origin.pull()
-        return 'Updated PythonAnywhere successfully', 200
-    return 'Unathorized', 401
 
 # Auth routes
 @app.route("/login", methods=["GET", "POST"])
@@ -127,7 +105,7 @@ def index():
     nachname = request.form["nachname"]
     adresse = request.form["adresse"]
     telefon = request.form["telefon"]
-    db_write("INSERT INTO besitzer (vorname, nachname, adresse, telefon) VALUES (%s, %s, %s, %s)", (vorname, nachname, adresse, telefon, ))
+    db_write("INSERT INTO besitzer (vorname, nachname, adresse, telefon) VALUES (?, ?, ?, ?)", (vorname, nachname, adresse, telefon, ))
     return redirect(url_for("index"))
 
 @app.route("/kunde/delete", methods=["POST"])
@@ -135,7 +113,7 @@ def index():
 def delete_kunde():
     kunde_id = request.form.get("id")
     try:
-        db_write("DELETE FROM besitzer WHERE id=%s", (kunde_id,))
+        db_write("DELETE FROM besitzer WHERE id=?", (kunde_id,))
         return redirect(url_for("index"))
     except Exception as e:
         logging.error(f"Error deleting kunde with id {kunde_id}: {e}")
@@ -146,7 +124,7 @@ def delete_kunde():
 # @login_required
 # def complete():
 #     todo_id = request.form.get("id")
-#     db_write("DELETE FROM todos WHERE user_id=%s AND id=%s", (current_user.id, todo_id,))
+#     db_write("DELETE FROM todos WHERE user_id=? AND id=?", (current_user.id, todo_id,))
 #     return redirect(url_for("index"))
 
 if __name__ == "__main__":
