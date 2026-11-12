@@ -1,11 +1,11 @@
-# 📘 Projekt-Anleitung: Flask + SQLite
+# Projekt-Anleitung: Flask + SQLite
 Diese Demo-App zeigt, wie eine kleine Webapplikation mit **Flask** (Python) und einer **SQLite**-Datenbank funktioniert: Login/Registrierung sowie eine einfache Verwaltung von Tierbesitzer\*innen.
 
 Die Anleitung besteht aus zwei Teilen:
 - **Teil A – Lokal entwickeln:** Python und VSCode installieren und die App auf dem eigenen Computer starten.
 - **Teil B – Online stellen (optional):** Die App im Team über GitHub und PythonAnywhere veröffentlichen.
 
-## 📁 Projektstruktur
+## Projektstruktur
 
 ```
 mng_demo_app/
@@ -22,14 +22,14 @@ Die Datenbank ist eine einzelne Datei `db.sqlite3` im Projektordner. Sie wird be
 
 ------------------------------------------------------------------------
 
-# 🖥️ Teil A – Lokal entwickeln
+# Teil A – Lokal entwickeln (Nur auf Windows oder MacOS möglich, nicht auf Tablets)
 
-## 🐍 1. Python installieren
+## 1. Python installieren
 
 Benötigt wird **Python 3.11 oder neuer**.
 
 ### Windows
-1. 👉 https://www.python.org/downloads/ öffnen und die aktuelle Version herunterladen.
+1. https://www.python.org/downloads/ öffnen und die aktuelle Version herunterladen.
 2. Installer starten.
 3. **Wichtig:** Ganz unten das Häkchen bei **„Add python.exe to PATH“** setzen.
 4. Auf **„Install Now“** klicken.
@@ -39,10 +39,10 @@ Benötigt wird **Python 3.11 oder neuer**.
    ```
    Es sollte z.B. `Python 3.13.x` erscheinen.
 
-> 💡 Öffnet sich stattdessen der Microsoft Store, wurde Python nicht zum PATH hinzugefügt. Installer erneut starten → *Modify* → *Add Python to environment variables* aktivieren, oder unter *Einstellungen → Apps → Erweiterte App-Einstellungen → App-Ausführungsaliase* die Einträge für `python.exe` deaktivieren.
+>  Öffnet sich stattdessen der Microsoft Store, wurde Python nicht zum PATH hinzugefügt. Installer erneut starten → *Modify* → *Add Python to environment variables* aktivieren, oder unter *Einstellungen → Apps → Erweiterte App-Einstellungen → App-Ausführungsaliase* die Einträge für `python.exe` deaktivieren.
 
 ### macOS
-1. 👉 https://www.python.org/downloads/ öffnen und den macOS-Installer herunterladen.
+1. https://www.python.org/downloads/ öffnen und den macOS-Installer herunterladen.
 2. Installer ausführen.
 3. Kontrolle im Terminal:
    ```
@@ -55,10 +55,10 @@ Wer bereits **Anaconda** oder **Miniconda** installiert hat, kann auch eine cond
 
 ------------------------------------------------------------------------
 
-## 🧩 2. VSCode und Erweiterungen installieren
+## 2. VSCode und Erweiterungen installieren
 
 ### 2.1 VSCode installieren
-1. 👉 https://code.visualstudio.com/ öffnen, herunterladen und installieren.
+1.  https://code.visualstudio.com/ öffnen, herunterladen und installieren.
 2. Windows: Im Installer die Optionen **„Zu PATH hinzufügen“** und **„Mit Code öffnen“** aktivieren.
 
 ### 2.2 Erweiterungen installieren
@@ -73,7 +73,7 @@ Wer bereits **Anaconda** oder **Miniconda** installiert hat, kann auch eine cond
 
 ------------------------------------------------------------------------
 
-## 📥 3. Projekt herunterladen und in VSCode öffnen
+## 3. Projekt herunterladen und in VSCode öffnen
 
 Anleitungen auf Moodle zum Einrichten von VSCode und Github befolgen.
 
@@ -84,7 +84,7 @@ Anleitungen auf Moodle zum Einrichten von VSCode und Github befolgen.
 
 ------------------------------------------------------------------------
 
-## 📦 4. Python-Umgebung einrichten und Pakete installieren
+## 4. Python-Umgebung einrichten und Pakete installieren
 
 Damit die Pakete des Projekts nicht mit anderen Projekten vermischt werden, wird eine eigene Umgebung verwendet.
 
@@ -105,7 +105,7 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-> 💡 Meldet PowerShell *„Die Ausführung von Skripts ist auf diesem System deaktiviert“*, einmalig folgenden Befehl ausführen und danach erneut aktivieren:
+> Meldet PowerShell *„Die Ausführung von Skripts ist auf diesem System deaktiviert“*, einmalig folgenden Befehl ausführen und danach erneut aktivieren:
 > ```powershell
 > Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
 > ```
@@ -132,14 +132,14 @@ Unten rechts in der Statusleiste wird nun die gewählte Python-Version angezeigt
 
 ------------------------------------------------------------------------
 
-## ▶️ 5. App starten
+##  5. App starten
 
 Im VSCode-Terminal (mit aktiver Umgebung):
 ```
 python flask_app.py
 ```
 
-Alternativ: `flask_app.py` öffnen und oben rechts auf den ▶️ **Run**-Button klicken.
+Alternativ: `flask_app.py` öffnen und oben rechts auf den  **Run**-Button klicken.
 
 Im Terminal erscheint u.a.:
 ```
@@ -154,7 +154,7 @@ Die App läuft im **Debug-Modus**: Änderungen am Code werden automatisch neu ge
 
 ------------------------------------------------------------------------
 
-## 🗄️ 6. Datenbank
+## 6. Datenbank
 
 - Die Datenbank liegt in der Datei **`db.sqlite3`** im Projektordner und wird beim ersten Start automatisch aus `db/TODOS.sql` erstellt.
 - **Anschauen:** Mit der Erweiterung *SQLite Viewer* einfach `db.sqlite3` in VSCode anklicken.
@@ -163,24 +163,24 @@ Die App läuft im **Debug-Modus**: Änderungen am Code werden automatisch neu ge
   ```
   python db.py
   ```
-  ⚠️ Dabei werden **alle Daten gelöscht** (auch registrierte Benutzer) und die Beispieldaten neu eingefügt.
+  Dabei werden **alle Daten gelöscht** (auch registrierte Benutzer) und die Beispieldaten neu eingefügt.
 - `db.sqlite3` ist in `.gitignore` eingetragen und wird **nicht** auf GitHub hochgeladen – jede Person hat ihre eigene lokale Datenbank.
 
 
 ------------------------------------------------------------------------
 
-# 🌐 Teil B – Im Team online stellen (PythonAnywhere, optional oder für Tablet-Benutzer)
+# Teil B – Im Team online stellen (PythonAnywhere, optional oder für Tablet-Benutzer)
 
 **Hinweis:** Nur eine Person pro Team muss diesen Teil durchführen.
 
-## ✅ Voraussetzungen
+## Voraussetzungen
 
 -   Alle Teammitglieder besitzen einen **GitHub-Account**
 -   **Eine Person** besitzt einen **PythonAnywhere-Account**
 -   Diese Person teilt das PythonAnywhere-Login **mit dem Team** (damit alle deployen können)
 
-## 🌐 1. PythonAnywhere vorbereiten
-👉 https://www.pythonanywhere.com
+## 1. PythonAnywhere vorbereiten
+https://www.pythonanywhere.com
 
 ### 2.2 Neue Flask-Webapp erstellen
 1.	Menü: Web → Add new web app
@@ -205,7 +205,7 @@ mv <dein_repo> mysite
 pip3.13 install --user -r mysite/requirements.txt
 
 
-## 🗄️ 3. Datenbank
+## 3. Datenbank
 Es ist **keine Einrichtung nötig**: Die SQLite-Datei `mysite/db.sqlite3` wird beim ersten Aufruf der Webseite automatisch erstellt.
 
 Zum Zurücksetzen in einer Bash-Console:
@@ -213,10 +213,20 @@ Zum Zurücksetzen in einer Bash-Console:
 cd mysite
 python3.13 db.py
 ```
-Danach im Menü *Web* auf 🔄 **Reload** klicken.
+Danach im Menü *Web* auf **Reload** klicken.
 
 
-## ✅ 4. Website testen
+## 4. Website testen
 1. Rufe die URL http://<username_pythonanywhere>.pythonanywhere.com auf.
 2. Siehst du ein Login? Klicke auf registrieren und registriere einen User
-3. Falls du noch die Message "Welcome to Flask!" siehst, gehe zurück zum Menü "Web" und klicke auf 🔄 Reload
+3. Falls du noch die Message "Welcome to Flask!" siehst, gehe zurück zum Menü "Web" und klicke auf  Reload
+
+## 5. Website aktualisieren
+
+Auf PythonAnywhere:
+```bash
+cd mysite
+git pull
+pip3.13 install --user -r requirements.txt
+```
+Danach im Menü von PythonAnywhere *Web* auf  **Reload** klicken.
