@@ -103,7 +103,7 @@ git config --global user.email "deine.email@beispiel.ch"
 
 ------------------------------------------------------------------------
 
-## 4. Git Repository clonen
+## 4. Git Repository clonen (Für diesen Schritt kann alternativ kann auch das Video VSCode - Schnellstart auf Moodle genutzt werden)
 
 Beim **Clonen** wird eine lokale Kopie eines bestehenden GitHub-Repositories erstellt.
 
