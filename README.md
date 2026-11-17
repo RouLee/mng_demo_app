@@ -73,18 +73,65 @@ Wer bereits **Anaconda** oder **Miniconda** installiert hat, kann auch eine cond
 
 ------------------------------------------------------------------------
 
-## 3. Projekt herunterladen und in VSCode öffnen
+## 3. Git installieren
 
-Anleitungen auf Moodle zum Einrichten von VSCode und Github befolgen.
+Mit **Git** wird der Code von GitHub heruntergeladen (geklont) und später Änderungen synchronisiert.
+
+### Windows
+1. https://git-scm.com/downloads/win öffnen und den **64-bit Git for Windows Setup** herunterladen.
+2. Installer starten und überall die Standardeinstellungen mit **Next** bestätigen, am Schluss auf **Install** klicken.
+3. Kontrolle: VSCode bzw. eine neue PowerShell öffnen und eingeben:
+   ```
+   git --version
+   ```
+   Es sollte z.B. `git version 2.x.x.windows.x` erscheinen.
+
+### macOS
+1. Im Terminal eingeben:
+   ```
+   git --version
+   ```
+2. Ist Git noch nicht installiert, erscheint ein Fenster zur Installation der **Command Line Developer Tools** → auf **Installieren** klicken und warten.
+   Alternativ mit Homebrew: `brew install git`
+
+### Git einrichten (einmalig)
+Name und E-Mail-Adresse setzen (dieselbe E-Mail wie beim GitHub-Account verwenden):
+```
+git config --global user.name "Vorname Nachname"
+git config --global user.email "deine.email@beispiel.ch"
+```
+
+------------------------------------------------------------------------
+
+## 4. Git Repository clonen
+
+Beim **Clonen** wird eine lokale Kopie eines bestehenden GitHub-Repositories erstellt.
+
+### 4.1 Repository-URL kopieren
+1. Das Repository auf GitHub öffnen (z.B. https://github.com/yourUserName/db-projekt-3x bzw. euer eigenes Repository/Fork).
+2. Auf den grünen Button **Code** klicken.
+3. Reiter **HTTPS** wählen und die URL kopieren, z.B. `https://github.com/dein_github_username/dein_repo.git`
+
+### 4.2 Clonen in VSCode
+1. VSCode öffnen und `Ctrl+Shift+P` (macOS: `Cmd+Shift+P`) drücken.
+2. **„Git: Clone“** eingeben und auswählen.
+3. Die kopierte URL einfügen und mit `Enter` bestätigen.
+4. Einen Ordner wählen, in dem das Repository gespeichert werden soll (z.B. `C:\Users\<Name>\Repositories`), und auf **Select as Repository Destination** klicken.
+5. Beim ersten Mal öffnet sich ein Fenster, um sich bei **GitHub anzumelden** → **Sign in with browser** bzw. **Allow** und im Browser bestätigen.
+6. Auf die Frage *„Would you like to open the cloned repository?“* auf **Open** klicken.
+
+## 5. Projekt herunterladen und in VSCode öffnen
+
 
 1. Von https://github.com/RouLee/mng_demo_app rechts oben auf **Code** → **Download ZIP** klicken.
 2. ZIP-Datei in eurem Ordner des lokalen Repositories entpacken.
 3. VSCode öffnen → **Datei → Ordner öffnen** → den entpackten Ordner auswählen.
+4. Falls oben die Meldung kommt ob man der Umgebung vertrauen möchte, auf **Trust** klicken.
 
 
 ------------------------------------------------------------------------
 
-## 4. Python-Umgebung einrichten und Pakete installieren
+## 6. Python-Umgebung einrichten und Pakete installieren
 
 Damit die Pakete des Projekts nicht mit anderen Projekten vermischt werden, wird eine eigene Umgebung verwendet.
 
@@ -112,17 +159,6 @@ pip install -r requirements.txt
 
 Ist die Umgebung aktiv, steht im Terminal `(.venv)` vor der Eingabezeile.
 
-
-
-
-### Variante B: conda (Anaconda / Miniconda) (falls Conda installiert)
-```bash
-conda create -n flaskdemo python=3.12
-conda activate flaskdemo
-pip install -r requirements.txt
-```
-(Falls bereits eine passende Umgebung existiert, z.B. `aqvaa`, genügt `conda activate aqvaa` und `pip install -r requirements.txt`.)
-
 ### Interpreter in VSCode auswählen
 1. `Ctrl+Shift+P` (macOS: `Cmd+Shift+P`) drücken.
 2. **„Python: Select Interpreter“** eingeben und auswählen.
@@ -132,7 +168,7 @@ Unten rechts in der Statusleiste wird nun die gewählte Python-Version angezeigt
 
 ------------------------------------------------------------------------
 
-##  5. App starten
+##  7. App starten
 
 Im VSCode-Terminal (mit aktiver Umgebung):
 ```
@@ -154,7 +190,7 @@ Die App läuft im **Debug-Modus**: Änderungen am Code werden automatisch neu ge
 
 ------------------------------------------------------------------------
 
-## 6. Datenbank
+## 8. Datenbank
 
 - Die Datenbank liegt in der Datei **`db.sqlite3`** im Projektordner und wird beim ersten Start automatisch aus `db/TODOS.sql` erstellt.
 - **Anschauen:** Mit der Erweiterung *SQLite Viewer* einfach `db.sqlite3` in VSCode anklicken.
